@@ -1,0 +1,28 @@
+<mat-form-field>
+  <input matInput placeholder="age" [(ngModel)]="age" >
+</mat-form-field>
+<mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="gender" (change)="change()">
+  <mat-button-toggle value="M">
+    Male
+  </mat-button-toggle>
+  <mat-button-toggle value="F">
+    Female
+  </mat-button-toggle>
+
+</mat-button-toggle-group>
+
+Face Amount:
+<mat-slider [(ngModel)]="faceAmount" min=100000 max=500000 (change)="change()" step="5000"></mat-slider>{{faceAmount}}
+<div id="chart"></div>
+
+<mat-table #table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="{{c}}" *ngFor="let c of displayedColumns; let i = index">
+    <mat-header-cell *matHeaderCellDef> {{c}} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element[i]}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
